@@ -1,9 +1,11 @@
 'use client'
+import { layoutConfig } from "@/config/layout.config";
 import { siteConfig } from "@/config/site.config";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as LinkHero, Button} from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem,} from "@heroui/react";
 import Image from "next/image";
 import Link from 'next/link'
 import { usePathname } from "next/navigation";
+import Button from "./common/button";
 
 
 export default function Header() {
@@ -11,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <Navbar className="py-3.5">
+    <Navbar className={`py-3.5 h-[${layoutConfig.headerHeight}]`}>
         <NavbarBrand>
         
             <Link href='/' className="flex gap-1 items-center">
@@ -48,20 +50,22 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href='/login' 
+          {/* <Link href='/login' 
           className="border border-transparent
         hover:text-blue-300 hover:rounded-md
           transition-all duration-200">
             Логин
-            </Link>
+            </Link> */}
+            <Button type="button">Логин</Button>
         </NavbarItem>
         <NavbarItem>
-          <Link href='/register' 
+          {/* <Link href='/register' 
           className="border border-transparent
         hover:text-blue-300 hover:rounded-md
           transition-all duration-200">
             Регистрация
-            </Link>
+            </Link> */}
+            <Button type="button">Регистрация</Button>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

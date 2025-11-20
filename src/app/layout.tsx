@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/providers/provider";
 import Header from "@/components/UI/header";
 import { siteConfig } from "@/config/site.config";
+import { layoutConfig } from "@/config/layout.config";
 
 
 const geistSans = Geist({
@@ -33,7 +34,14 @@ export default function RootLayout({
       >
         <Providers>
             <Header/>
+          <main className="flex flex-col h-[100vh] w-full justify-start items-center"
+          style={{height:`calc(100vh - ${layoutConfig.footerHeight} - ${layoutConfig.headerHeight})`}}
+          >
           {children}
+          </main>
+          <footer className={`flex justify-center items-center h-[${layoutConfig.footerHeight}]`}>
+            {siteConfig.description}
+          </footer>
         </Providers>
       </body>
     </html>
